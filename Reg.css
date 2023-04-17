@@ -7,8 +7,8 @@
 
 body {
    
-    background-image: linear-gradient(to top, rgba(12, 26, 15, 0) 40%, rgba(255, 255, 255, 0.5) 70%, rgb(255, 255, 255) 100%), url('pexels-ylanite-koppens-796602.jpg');
-
+    background-image: linear-gradient(to top, rgba(12, 26, 15, 0) 40%, rgba(255, 255, 255, 0.5) 70%, rgb(255, 255, 255) 100%), url('5210523.jpg');
+   
     background-repeat: no-repeat;
     background-size: cover;
     transition: background-color 0.5s ease-in-out;

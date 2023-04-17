@@ -104,8 +104,7 @@
     <h2>Navigation</h2>
     <a href="company.php" >Update</a>
     <a href="Profile.php"class="active">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="SRC.php">Students Registered</a>
     <a href="logout.php">Logout</a>
   </div>
   <div class="conet" style = "  margin-left: 200px;

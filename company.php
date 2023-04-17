@@ -120,9 +120,8 @@ cpiInput.addEventListener('input', () => {
     <h2>Navigation</h2>
     <a href="#" class="active">Update</a>
     <a href="Profile.php">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-    <a href="#">Update</a>
+    <a href="SRC.php">Students Registered</a>
+    <a href="logout.php">Logout</a>
   </div>
   <div class="conet" style = "  margin-left: 200px;
   padding: 20px;">
