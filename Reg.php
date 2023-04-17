@@ -28,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            $sql = "SELECT * FROM student_mp_db WHERE Email='$age' AND Password='$password'";
+            $sql = "SELECT * FROM Student WHERE Email='$age' AND Password='$password'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     session_start();
     session_regenerate_id();
     $_SESSION['Email']= $_POST['Email'];
     // Login successful, redirect to dashboard
-    header('Location: Company_To_Apply.php?email='.$age);
+    header('Location: stud_profile.php');
     exit;
   } else {
     // Login failed, display error message
