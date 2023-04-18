@@ -88,11 +88,11 @@ a.apply-link {
 
     .navigation a:hover {
       background-color: #ddd;
-      border-left: 5px solid #4caf50;
+      border-left: 5px #93a27a;
     }
 
     .navigation a.active {
-      background-color: #4caf50;
+      background-color:#555358;
       color: #fff;
       border-left: 5px solid #fff;
     }
@@ -183,14 +183,16 @@ a.apply-link {
 </head>
 <body>
 	<?php
+	ini_set('display_errors','On');
 		// Define the companies array
+		session_start();
 		
-		$email = $_GET['email']; 
+		$email = $_SESSION['Email']; 
 
-		$conn=new mysqli('127.0.0.1','root','','mp_db');
+		$conn = new mysqli('localhost', 'root', '', 'CampusConnect');
 
 		$companies = array();
-		$sql = "SELECT * FROM companie";
+		$sql = "SELECT * FROM Companies";
 
 		// Execute the query and store the results
 		$result = mysqli_query($conn, $sql);
@@ -207,8 +209,8 @@ if (mysqli_num_rows($result) > 0) {
 	
 
 $query = "SELECT c.Company_ID, c.Comp_Name, j.Role_Name
-          FROM companie c
-          JOIN company_job_role j ON c.Company_ID = j.company_id
+          FROM Companies c
+          JOIN Job_Roles j ON c.Company_ID = j.company_id
           WHERE c.Company_ID = $company_id";
 
  $result2 = mysqli_query($conn, $query);
@@ -263,11 +265,12 @@ $filteredCompanies = array_filter($companies, function($company) use ($search, $
 		echo '<h1>Companies</h1>';
 		echo '<div class="navigation">';
 echo '<h2>Navigation</h2>';
-echo '<a href="#" class="active">Update</a>';
-echo '<a href="Profile.php">About</a>';
-echo '<a href="#">Services</a>';
-echo '<a href="#">Contact</a>';
-echo '<a href="#">Update</a>';
+echo '<a href="stud_profile.php?email=<?php echo $email; ?>">Profile</a>';
+echo '<a href="StudentUpdate.php?email=<?php echo $email; ?>">Update</a>';
+echo '<a href="Company_To_Apply.php?email=<?php echo $email; ?>" class="active">Companies</a>';
+echo '    <a href="Alumni_Stud.php?email=<?php echo $email; ?>">Alumni</a>';
+echo '<a href="#">About Us</a>';
+echo '<a href="logout.php">Log-Out</a>';
 echo '</div>';
 		echo '<form>';
 echo '<input type="text" name="search" placeholder="Search...">';

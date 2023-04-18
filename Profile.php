@@ -31,11 +31,11 @@
 
     .navigation a:hover {
       background-color: #ddd;
-      border-left: 5px solid #4caf50;
+      border-left: 5px #93a27a;
     }
 
     .navigation a.active {
-      background-color: #4caf50;
+      background-color:#555358;
       color: #fff;
       border-left: 5px solid #fff;
     }
@@ -47,76 +47,181 @@
       text-align: center;
       margin-bottom: 20px;
     }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eee;
-    }
+        .container {
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-image: url("pexels-matheus-viana-2414036.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(202, 202, 202, 0.5); /* adjust the opacity here */
+}
 
-    h1 {
-      color: #0055a5;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-transform: uppercase;
-    }
 
-    h2 {
-      color: #0055a5;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
+/* Hover effect */
+.container:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease-in-out;
+}
 
-    p {
-      color: #333;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
+/* Job role details */
+#job_roles {
+  margin-top: 20px;
+}
 
-    table {
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-      width: 100%;
-    }
+/* Remove job role button */
+.remove_job_role {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(154, 145, 136, 1);
+  
+}
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      text-align: left;
-      vertical-align: top;
-    }
+/* Remove job role button hover effect */
+.remove_job_role:hover {
+  background-color: #b71c1c;
+  box-shadow: 0px 0px 10px rgb(184, 18, 18);
+}
 
-    th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
+/* Form label */
+label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000000;
+}
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+/* Form input fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+}
 
-    tr:hover {
-      background-color: #ddd;
+/* Form input fields focus */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"],
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+  background-color: #ffffff;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(255, 193, 7, 0.5);
+}
+
+button[type="submit"]:hover {
+  background-color: #F44336;
+  box-shadow: 0px 0px 20px rgba(244, 67, 54, 0.7);
+}
+
+
+/* Error message */
+.error {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Success message */
+.success {
+  color: #4caf50;
+  font-size: 14px;
+  margin-top: 5px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8); /* Set opacity to 0.8 */
+    border-radius: 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+th {
+    background-color: #5F6062;;
+    color: #ffffff;
+}
+
+td {
+    border-bottom: 1px solid #5F6062;; /* Add 'solid' to specify border style */
+}
+
+
+    /* Styling for form elements */
+    label {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333333;
     }
+    .center {
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
-<div class="navigation">
-    <h2>Navigation</h2>
-    <a href="company.php" >Update</a>
-    <a href="Profile.php"class="active">About</a>
-    <a href="SRC.php">Students Registered</a>
-    <a href="logout.php">Logout</a>
-  </div>
-  <div class="conet" style = "  margin-left: 200px;
-  padding: 20px;">
 
-  <h1>Company Details</h1>
+
+  <h1 class="center">Company Details</h1>
+
+
+
+
+
 
   <?php
   session_start();
 
   // Check if the user is logged in
   if (isset($_SESSION["Company_ID"])) {
+    echo '<div class="navigation">';
+    echo '<h2>Navigation</h2>';
+  
+    echo ' <a href="Profile.php?email=<?php echo $email; ?>"class="active" >Profile</a>';
+    echo '<a href="company.php?email=<?php echo $email; ?>">Update</a>';
+    echo '    <a href="SRC.php?email=<?php echo $email; ?>">Students Registered</a>';
+    echo '<a href="AboutUs.php">About Us</a>';
+    echo '<a href="logout.php">Log-Out</a>';
+    echo '</div>';
+    echo '<div class="container" style="margin-left: 230px; padding: 20px;">';
 
     // Include the database configuration file
     require_once "config.php";
@@ -171,6 +276,8 @@
     // User is not logged in, redirect to login page
     header("Location: login.php");
     exit();
+    echo '</div>';
+
   }
   ?>
 </div>

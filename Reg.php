@@ -9,7 +9,7 @@
 </head>
 
 <?php
-
+ini_set('display_errors', 'On');
 if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $form = $_POST['form'];
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     session_regenerate_id();
     $_SESSION['Email']= $_POST['Email'];
     // Login successful, redirect to dashboard
-    header('Location: stud_profile.php');
+    header('Location: StudentUpdate.php');
     exit;
   } else {
     // Login failed, display error message
@@ -98,14 +98,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            $sql = "SELECT * FROM student_mp_db WHERE Email='$age' AND Password='$password'";
+            $sql = "SELECT * FROM Alumni WHERE Email='$age' AND Password='$password'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     session_start();
     session_regenerate_id();
     $_SESSION['Email']= $_POST['Email'];
     // Login successful, redirect to dashboard
-    header('Location: Company_To_Apply.php');
+    header('Location: Alumni_Reg.php');
+    exit;
+  } else {
+    // Login failed, display error message
+    echo 'Invalid username or password.';
+  }
+  $conn->close();
+
+          }
+        
+    }
+
+
+    if($radioValue=="admin")
+    {
+        $age = $_POST['Email'];
+        $password = $_POST['Password'];
+        if ( empty($age) || empty($password)) {
+            echo 'Please fill all fields.';
+          }
+          else{
+                $conn=new mysqli('localhost','root','','CampusConnect');
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            $sql = "SELECT * FROM admin WHERE Email='$age' AND Password='$password'";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    session_start();
+    session_regenerate_id();
+    $_SESSION['Email']= $_POST['Email'];
+    // Login successful, redirect to dashboard
+    header('Location: home.php');
     exit;
   } else {
     // Login failed, display error message
@@ -201,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $sql = "INSERT INTO student_mp_db ( Email, Password) VALUES ( '$age', '$password')";
+            $sql = "INSERT INTO Alumni ( Email, Password) VALUES ( '$age', '$password')";
             if ($conn->query($sql) === TRUE) {
               echo 'User created successfully.';
             } else {
@@ -286,6 +318,10 @@ function is_password_strong($password) {
                     <label>
                         <input type="radio" name="user-type" value="alumni" checked>
                     Alumni
+                    </label>
+                    <label>
+                        <input type="radio" name="user-type" value="admin" checked>
+                    Admin
                     </label>
                 </div>
                 <button type="submit" class="btn">Login</button>

@@ -80,7 +80,7 @@ nav ul li a {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 115%;
     height: 100%;
     padding: 30px 30px 30px 30px;
     background-color: rgba(255, 255, 255, 0.5);
@@ -143,6 +143,7 @@ nav ul li a {
 }
 
 .login-form {
+  width: 115%;
     display: block;
 }
 
@@ -216,6 +217,7 @@ nav ul li a {
   .radio-buttons label {
     display: inline-flex;
     margin-right: 30px;
+    text-size-adjust: 10px;
   }
   
   
@@ -264,3 +266,5 @@ nav ul li a {
     letter-spacing: 4px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   }
+
+  

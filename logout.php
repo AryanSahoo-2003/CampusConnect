@@ -1,6 +1,6 @@
 <?php
    session_start();
-   if(isset($_SESSION["Company_ID"])){
+   if(isset($_SESSION)){
        session_destroy();
        header('location: Reg.php');
    }

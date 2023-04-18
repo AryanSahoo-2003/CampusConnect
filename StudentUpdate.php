@@ -32,11 +32,11 @@
 
     .navigation a:hover {
       background-color: #ddd;
-      border-left: 5px solid #4caf50;
+      border-left: 5px #93a27a;
     }
 
     .navigation a.active {
-      background-color: #4caf50;
+      background-color:#555358;
       color: #fff;
       border-left: 5px solid #fff;
     }
@@ -49,11 +49,11 @@
       margin-bottom: 20px;
     }
 	</style>
-<link rel="stylesheet" type="text/css" href="Student_Update1.css">
+<link rel="stylesheet" type="text/css" href="Student_Update.css">
 <meta charset="UTF-8">
   <title>Update Information</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="Student_Update_Date.css">
+  <!-- <link rel="stylesheet" href="Student_Update_Date.css"> -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <script>
@@ -67,37 +67,36 @@
   </script>
 </head>
 <?php
+ini_set('display_errors','On');
 session_start();
-$email = $_GET['email'];
+$email = $_SESSION['Email'];
 
 if(isset($_SESSION['Email']))
 {
 if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
 
-      echo $_FILES["resume1"];
+      // echo $_FILES["resume1"];
 
-      if (isset($_FILES['resume1'])) {
-        echo "Resume uploaded successfully!";
-        $file_name = $_FILES['resume1']['name'];
-        $file_tmp = $_FILES['resume1']['tmp_name'];
-        $file_dest = 'C:/xampp_mp/htdocs/Mini_Project/Resume/' . $file_name;
-        if (move_uploaded_file($file_tmp, $file_dest)) {
-          echo "Resume uploaded successfully!";
-        } else {
-          echo "Error uploading resume!";
-        }
-      }
+      // if (isset($_FILES['resume1'])) {
+      //   echo "Resume uploaded successfully!";
+      //   $file_name = $_FILES['resume1']['name'];
+      //   $file_tmp = $_FILES['resume1']['tmp_name'];
+      //   $file_dest = 'C:/xampp_mp/htdocs/Mini_Project/Resume/' . $file_name;
+      //   if (move_uploaded_file($file_tmp, $file_dest)) {
+      //     echo "Resume uploaded successfully!";
+      //   } else {
+      //     echo "Error uploading resume!";
+      //   }
+      // }
       
-
-$conn=new mysqli('127.0.0.1','root','','mp_db');
+$conn=new mysqli('localhost','root','','CampusConnect');
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
        
-
 $name = $_POST['name'];
-$age = $_POST['age'];
+// $age = $_POST['age'];
 $gender = $_POST['gender'];
 $tenth_marks = $_POST['tenth_marks'];
 $twelfth_marks = $_POST['twelfth_marks'];
@@ -105,11 +104,12 @@ $cpi = $_POST['cpi'];
 $sex = $_POST['sex'];
 $roll = $_POST['roll'];
 $specialization = $_POST['specialization'];
-$AOF = $_POST['area_of_interest'];
+$AOF = $_POST['field_to_work'];
 $Dob=$_POST['datepicker'];
-$RollNo="2101CS69";
+$RollNo=$_POST['roll'];
 
-$sql = "UPDATE student_mp_db SET Name='$name',10th='$tenth_marks',RollNo='$roll',12th='$twelfth_marks',CPI='$cpi',DOB='$Dob',PhoneNo='$sex',Sex='$gender',Specialization='$specialization', Area_of_interest='$AOF' WHERE Email='$email'";
+
+$sql = "UPDATE Student SET Name='$name',10th='$tenth_marks',RollNo='$roll',12th='$twelfth_marks',CPI='$cpi',DOB='$Dob',PhoneNo='$sex',Sex='$gender',Specialization='$specialization', Area_of_interest='$AOF' WHERE Email='$email'";
 $conn->query($sql);
 
 if (mysqli_query($conn, $sql)) {
@@ -129,33 +129,32 @@ if (mysqli_query($conn, $sql)) {
   <title>Update User</title>
   <div class="navigation">
     <h2>Navigation</h2>
-    <a href="Home.php?email=<?php echo $email; ?>">Home</a>
-    <a href="Student_Profile.php?email=<?php echo $email; ?>">Profile</a>
+    <a href="stud_profile.php?email=<?php echo $email; ?>">Profile</a>
     <a href="StudentUpdate.php?email=<?php echo $email; ?>" class="active">Update</a>
-    
     <a href="Company_To_Apply.php?email=<?php echo $email; ?>">Companies</a>
-    <a href="Alumni.php?email=<?php echo $email; ?>">Alumni</a>
+    <a href="Alumni_Stud.php?email=<?php echo $email; ?>">Alumni</a>
     
     <a href="AboutUs.php">About Us</a>
+    <a href="logout.php">Log-Out</a>
   </div>
   <div class="container" style='margin-left:260px; padding:20px;'>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?email=<?php echo urlencode($email); ?>" method="POST">
+  <form action="" method="POST">
 
   <input type="text" name="name" placeholder="Name">
-  <input type="number" name="roll" placeholder="Roll Number">
-  <input type="number" name="age" placeholder="Age">
+  <input type="text" name="roll" placeholder="Roll Number">
+  <!-- <input type="number" name="age" placeholder="Age"> -->
   <input type="text" name="gender" placeholder="Gender">
   <input type="number" step="0.01" name="sex" placeholder="Contact Number">
   <!-- <input type="text" step="0.01" name="resume" placeholder="Drive Link to Resume"> -->
-	<input type="text" id="datepicker" name="datepicker" placeholder="Date Of Birth">
+	<input type="date" id="datepicker" name="datepicker" placeholder="Date Of Birth">
   <input type="file" name="resume1" accept=".pdf">
 
     <input type="number" step="0.01" name="tenth_marks" placeholder="10th Marks">
   <input type="number" step="0.01" name="twelfth_marks" placeholder="12th Marks">
   <input type="number" step="0.01" name="cpi" placeholder="CPI">
   <input type="text" name="specialization" placeholder="Specialization">
-  <input type="text" name="area_of_interest" placeholder="Area of Interest">
-  <select name="field_to_work">
+  <!-- <input type="text" name="area_of_interest" placeholder="Area of Interest"> -->
+  <select name="field_to_work" id = "field_to_work" required>
     <option value="">Select Field to Work In</option>
     <option value="Quant">Quant</option>
     <option value="Networks">Networks</option>

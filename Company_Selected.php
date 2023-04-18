@@ -135,7 +135,7 @@ $email = $_GET['email'];
 
 
 // Connect to the database
-$conn=new mysqli('127.0.0.1','root','','mp_db');
+$conn = new mysqli('localhost', 'root', '', 'CampusConnect');
 
 // Check connection
 if (!$conn) {
@@ -143,15 +143,15 @@ if (!$conn) {
 }
 
 // Retrieve the company information from the database
-$sql = "SELECT * FROM companie WHERE Comp_email = '$comp_email'";
+$sql = "SELECT * FROM Companies WHERE Comp_email = '$comp_email'";
 $result = mysqli_query($conn, $sql);
-$sql = "SELECT RollNo FROM student_mp_db WHERE Email = '$email'";
+$sql = "SELECT RollNo FROM Student WHERE Email = '$email'";
 $result_roll = mysqli_query($conn, $sql);
 
   $row1=mysqli_fetch_assoc($result_roll);
   $RollNo=$row1['RollNo'];
 
-  $sql = "SELECT Company_ID FROM companie WHERE Comp_email = '$comp_email'";
+  $sql = "SELECT Company_ID FROM Companies WHERE Comp_email = '$comp_email'";
 $result_comp_id = mysqli_query($conn, $sql);
 
   $row2=mysqli_fetch_assoc($result_comp_id);
@@ -168,7 +168,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Email: {$row['Comp_email']}</p>";
 
     // Retrieve the job listings for the company
-    $sql = "SELECT * FROM company_job_role WHERE company_id = '{$row['Company_ID']}'";
+    $sql = "SELECT * FROM Job_Roles WHERE company_id = '{$row['Company_ID']}'";
     $result1 = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result1) > 0) {

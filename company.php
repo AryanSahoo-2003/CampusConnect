@@ -66,12 +66,7 @@ cpiInput.addEventListener('input', () => {
   </script>
 
 <style>
-  body {
-  background-image: url('');
-  background-size: cover;
-}
-    /* CSS for the navigation bar */
-    .navigation {
+     .navigation {
       position: fixed;
       top: 0;
       left: 0;
@@ -96,11 +91,11 @@ cpiInput.addEventListener('input', () => {
 
     .navigation a:hover {
       background-color: #ddd;
-      border-left: 5px solid #4caf50;
+      border-left: 5px #93a27a;
     }
 
     .navigation a.active {
-      background-color: #4caf50;
+      background-color:#555358;
       color: #fff;
       border-left: 5px solid #fff;
     }
@@ -112,17 +107,20 @@ cpiInput.addEventListener('input', () => {
       text-align: center;
       margin-bottom: 20px;
     }
-  </style>
+  
+
+</style>
 </head>
 <body>
   
 <div class="navigation">
-    <h2>Navigation</h2>
-    <a href="#" class="active">Update</a>
-    <a href="Profile.php">About</a>
-    <a href="SRC.php">Students Registered</a>
-    <a href="logout.php">Logout</a>
-  </div>
+  <h2>Navigation</h2>
+  <a href="Profile.php?email=<?php echo $email; ?>" >Profile</a>
+  <a href="company.php?email=<?php echo $email; ?>"class="active">Update</a>
+  <a href="SRC.php?email=<?php echo $email; ?>">Students Registered</a>
+  <a href="AboutUs.php">About Us</a>
+  <a href="logout.php">Log-Out</a>
+</div>
   <div class="conet" style = "  margin-left: 200px;
   padding: 20px;">
   <div class="container">
