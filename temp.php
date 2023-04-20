@@ -1,38 +1,46 @@
+<?php
+ini_set('display_errors','On');
+session_start();
+$email = $_SESSION['Email'];
 
-<table>
-        <thead>
-            <tr>
-                <th>Company</th>
-                <th>Job Role</th>
-                <th>Job Description</th>
-                <th>CTC</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
-        </thead>
-        <tbody>
-<?php>
-$sql = "SELECT * FROM alumni_experience where rollno = '$rollno'";
-            $result = mysqli_query($conn, $sql);
+if(isset($_SESSION['Email']))
+{
+if (true)
+    {     print_r($email); 
+$conn=new mysqli('localhost','root','','CampusConnect');
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+print_r($_SESSION);
+$name = $_POST['name'];
+// $age = $_POST['age'];
+$gender = $_POST['gender'];
+$tenth_marks = $_POST['tenth_marks'];
+$twelfth_marks = $_POST['twelfth_marks'];
+$cpi = $_POST['cpi'];
+$sex = $_POST['sex'];
+$roll = $_POST['roll'];
+$specialization = $_POST['specialization'];
+$AOF = $_POST['field_to_work'];
+$Dob=$_POST['datepicker'];
+$RollNo=$_POST['roll'];
+$_SESSION['cpi']=$cpi;
+$ctc = $_POST['Placed'];
+$_SESSION['ctc']=$ctc;
+print_r($_POST);
+$sql = "UPDATE Student SET Name='$name',10th='$tenth_marks',RollNo='$roll',12th='$twelfth_marks',CPI='$cpi',DOB='$Dob',PhoneNo='$sex',Sex='$gender',Specialization='$specialization', Area_of_interest='$AOF',CTC =$ctc WHERE Email='$email'";
+$conn->query($sql);
 
-            // Display the results in a table
-            while ($row = mysqli_fetch_assoc($result)) {
-            $sql1 = "SELECT * FROM alumni_experience where rollno = '$row['rollno']";
-            $result1 = mysqli_query($conn, $sql1);
-            while ($row1 = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>" . $row["company_name"] . "</td>";
-                echo "<td>" . $row["job_role"] . "</td>";
-                echo "<td>" . $row["job_desc"] . "</td>";
-                echo "<td>" . $row["ctc"] . "</td>";
-                echo "<td>" . $row["start_date"] . "</td>";
-                echo "<td>" . $row["end_date"] . "</td>";                                                                                                                                                                            
-                echo "</tr>";
-            }
-            }
-            mysqli_close($conn);
-            ?>
-        </tbody>
-    </table>
+if (mysqli_query($conn, $sql)) {
+   echo "hi";
+   print($_SESSION);
+} else {
+   echo "Error updating user: " . mysqli_error($conn);
+}
+    }
+  }
+  else{
+    header('Location : temp.php');
+  }
 
-            
+?>

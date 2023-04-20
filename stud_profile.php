@@ -222,10 +222,12 @@ line-height: 30px; / increase line height */
                     $year_diff = $current_year - $rollno_year+1;
                     $sql = "SELECT RollNo FROM Student WHERE Email = '$email'";
                     $result_roll = mysqli_query($conn, $sql);
-
+                    $_SESSION['cpi']=$student['CPI'];
+                    $_SESSION['ctc']=$student['CTC'];
                      $row1=mysqli_fetch_assoc($result_roll);
                     $RollNo=$row1['RollNo'];
-                    //Display year difference as string
+                    $hemlo = "'";
+                                  //Display year difference as string
                     echo "<h1>Welcome, <i>".$student['Name']."</i></h1>";
                     echo "<div>";
                     echo "<span class='label'><b>Roll No : </b></span><span class='value'>".$student['RollNo']."</span>";
@@ -244,6 +246,18 @@ line-height: 30px; / increase line height */
                     echo "</div>";
                     echo "<div>";
                     echo "<span class='label'><b>Date of Birth :</b> </span><span class='value'>".$student['DOB']."</span>";
+                    echo "</div>";
+                    echo "<div>";
+                    if($student['CTC']){
+                    echo "<span class='label'><b>Already Placed</b> <br><b>Current CTC :</b> </span><span class='value'>".$student['CTC']."</span>";}
+                    else{
+                      echo "<span class='label'><b>Not Placed</b></span><span class='value'></span>";}
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<span class='label'></span><span class='value'><a href ='".$student['resume']."'>Resume Link</a></span>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<span class='label'></span><span class='value'><a href ='".$student['transcript']."'>Transcript Link</a></span>";
                     echo "</div>";
 
                     if($year_diff==1){echo "<div><span class='label'>Batch Year:</span><span class='value'>".$year_diff."st year</span></div>";}}

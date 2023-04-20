@@ -116,41 +116,10 @@
         </div>
         <div>
             <label for="company">Company</label>
-            <select id="company" name="company" required>
+            <input type="text" id="company" name="company" required>
+            <!-- <select id="company" name="company" required>
             <option value="">Select an option</option>
-
-
-
-<?php
-        ini_set('display_errors','On');
-        session_start();
-        $email = $_SESSION['Email'];
-
-        if(true)
-        {
-        $conn=new mysqli('localhost','root','','CampusConnect');
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                $sql1 = "Select Comp_Name from Companies ";
-
-                $result = mysqli_query($conn, $sql1);
-        
-
-                if (mysqli_num_rows($result) > 0) {
-                
-                    while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<option value="'.$row['Comp_Name']. '">' . $row['Comp_Name'] . '</option>';
-                    }
-                // while($row1 = $result1->fetch_assoc($result1) ){
-                //     // print_r($row1);
-                //     // echo '<option value="'.$row1['Comp_Name']. '">' . $row1['Comp_Name'] . '</option>';
-                //     // echo 
-                // }
-            }
-        }
-        ?>
-            </select>
+            </select> -->
 		</div>
         <div>
             <label for="job_role">Job Role</label>

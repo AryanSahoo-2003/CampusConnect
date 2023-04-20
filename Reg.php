@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $sql = "INSERT INTO student_mp_db ( Email, Password) VALUES ( '$age', '$password')";
+            $sql = "INSERT INTO Student ( Email, Password) VALUES ( '$age', '$password')";
             if ($conn->query($sql) === TRUE) {
               echo 'User created successfully.';
             } else {
@@ -282,14 +282,13 @@ function is_password_strong($password) {
 <div class="container">
     <header>
         <div class="logo">
-            <img src="IITP.png" alt="Logo">
+            <img src="2.png" alt="Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="https://www.iitp.ac.in">IIT Patna Main Page</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://www.iitp.ac.in"><b>IIT Patna Main Page</b></a></li>
+                <li><a href="yearStats.php"><b>Statistics</b></a></li>
+                <!-- <li><a href="#">Contact</a></li> -->
             </ul>
         </nav>
     </header>
@@ -365,9 +364,9 @@ function is_password_strong($password) {
 
 <section class="about-us-container">
   <h4>About Us</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis, elit non laoreet accumsan, arcu ex bibendum orci, in elementum massa diam quis ipsum. Morbi at ipsum vel libero lacinia fringilla.</p>
-  <p>Donec porttitor tincidunt lacus, vel faucibus lorem finibus ac. Sed sit amet nunc ac odio vulputate interdum. Donec tincidunt lorem nec velit blandit efficitur. Aliquam a ipsum eu nulla fringilla commodo quis eu turpis. Pellentesque consequat ipsum ac metus aliquam placerat. Integer cursus quam mauris, vitae facilisis mauris volutpat a. Praesent pellentesque lectus in massa congue, ac rutrum nunc maximus. Fusce sed quam id dolor tristique rhoncus sed in urna. Etiam in odio in nunc facilisis semper at sit amet lorem.</p>
-</section>
-
+  <b>
+  <p>Welcome to the Placement Cell Portal for the Indian Institute of Technology Patna (IITP)!</p>
+		<p>We are committed to providing a convenient and effective platform for our students, alumni, and companies to connect and facilitate the recruitment process. Our goal is to help our students and alumni secure rewarding careers and assist companies in finding the best talent to meet their hiring needs.</p></section>
+</b>
 </body>
 </html>

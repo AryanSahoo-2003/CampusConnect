@@ -20,10 +20,10 @@
         SELECT Name, RollNo, Email, Password, Specialization, DOB,  YEAR(NOW()), Sex
         FROM Student
         WHERE RollNo = '$rollno'";
-        $sql3 = "DELETE FROM Student WHERE RollNo = $rollno";
+        $sql3 = "DELETE FROM Student WHERE RollNo = '$rollno'";
         if($conn->query($sql2)==TRUE){
-            if($conn->query($sql3)==TRUE){
-        if ($conn->query($sql) === TRUE) {
+            if($conn->query($sql)==TRUE){
+        if ($conn->query($sql3) === TRUE) {
             $sql1 = "UPDATE alumni_placement ap
             JOIN Job_Roles j ON j.Role_Name = ap.job_role AND j.Company_id = (SELECT Company_ID FROM Companies WHERE Comp_Name = ap.company_name)
             SET ap.ctc = j.Job_Package, ap.job_desc = j.Job_Desc";
@@ -105,7 +105,7 @@
         <a href="placing.php" class="active">Placing</a>
         <a href="logout.php">Log Out</a>
     </div>
-    <h1>Current Students</h1>
+    <h1>Placed</h1>
     <form method="post" action="">
         <div>
             <label for="rollno">Roll No</label>

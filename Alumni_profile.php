@@ -75,8 +75,8 @@
         </thead>
         <tbody>
             <?php
+            ini_set('display_errors','On');
             session_start();
-            $rollno = $_SESSION['rollno'];
 
             $host = "localhost";
             $username = "root";
@@ -86,17 +86,18 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-
             // Query the database for all entries in the experience table
-            $sql = "SELECT * FROM alumni_experience where rollno = '$rollno'";
+            $sql = "SELECT * FROM alumni_experience WHERE rollno = (SELECT RollNo FROM Alumni WHERE Email = '". $_SESSION['Email']."')";
             $result = mysqli_query($conn, $sql);
+            // print_r($result);
 
             // Display the results in a table
             while ($row = mysqli_fetch_assoc($result)) {
+              $_SESSION['rollno']=$row["rollno"] ;
                 echo "<tr>";
                 echo "<td>" . $row["company_name"] . "</td>";
                 echo "<td>" . $row["job_role"] . "</td>";
-                echo "<td>" . $row["job_desc"] . "</td>";
+                echo "<td width ='400%'>" . $row["job_desc"] . "</td>";
                 echo "<td>" . $row["ctc"] . "</td>";
                 echo "<td>" . $row["start_date"] . "</td>";
                 echo "<td>" . $row["end_date"] . "</td>";

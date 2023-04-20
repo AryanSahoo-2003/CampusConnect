@@ -24,6 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Profile</title>
     <style>
     body {
     background-image: url('');
@@ -41,7 +42,6 @@
       padding-top: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
-
     .navigation a {
       display: block;
       padding: 16px;
@@ -52,18 +52,15 @@
       font-weight: bold;
       border-left: 5px solid transparent;
     }
-
     .navigation a:hover {
       background-color: #ddd;
       border-left: 5px solid #4caf50;
     }
-
     .navigation a.active {
       background-color: #4caf50;
       color: #fff;
       border-left: 5px solid #fff;
     }
-
     .navigation h2 {
       font-size: 24px;
       font-weight: bold;
@@ -73,6 +70,13 @@
     }
     </style>
 </head>
+<body>
+    <div class="navigation">
+        <h2>Navigation</h2>
+        <a href="home.php">Home</a>
+        <a href="yearStats.php" class="active">Company</a>
+        <a href="logout.php">Log Out</a>
+    </div>
 <body>
     <h1>Placement</h1>
     <form method="post" action="">

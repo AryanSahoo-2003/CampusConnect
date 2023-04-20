@@ -157,7 +157,8 @@ $result_comp_id = mysqli_query($conn, $sql);
   $row2=mysqli_fetch_assoc($result_comp_id);
   $Company_ID=$row2['Company_ID'];
  
-  
+  $cpi_taken = $_SESSION['cpi'];  
+  $ctc = $_SESSION['ctc'];
 
 
 if (mysqli_num_rows($result) > 0) {
@@ -168,7 +169,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Email: {$row['Comp_email']}</p>";
 
     // Retrieve the job listings for the company
-    $sql = "SELECT * FROM Job_Roles WHERE company_id = '{$row['Company_ID']}'";
+    $sql = "SELECT * FROM Job_Roles WHERE company_id = '{$row['Company_ID']}' AND Min_CPI <= $cpi_taken AND Job_Package >= $ctc";
     $result1 = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result1) > 0) {

@@ -221,6 +221,15 @@ line-height: 30px; / increase line height */
                     echo "<div>";
                     echo "<span class='label'>DOB:</span><span class='value'>".$student['DOB']."</span>";
                     echo "</div>";
+                    echo "<div>";         
+                    echo "<span class='label'>Current CTC :</span><span class='value'>".$student['ctc']."</span>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<span class='label'>Resume Link :</span><span class='value'><a href =".$student['resume']."</a></span>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<span class='label'>Transcript Link :</span><span class='value'><a href =".$student['transcript']."</a></span>";
+                    echo "</div>";
 
                     if($year_diff==1){echo "<div><span class='label'>Batch Year:</span><span class='value'>".$year_diff."st year</span></div>";}}
                     else if($year_diff==2)

@@ -76,25 +76,11 @@ if(isset($_SESSION['Email']))
 if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
 
-      // echo $_FILES["resume1"];
-
-      // if (isset($_FILES['resume1'])) {
-      //   echo "Resume uploaded successfully!";
-      //   $file_name = $_FILES['resume1']['name'];
-      //   $file_tmp = $_FILES['resume1']['tmp_name'];
-      //   $file_dest = 'C:/xampp_mp/htdocs/Mini_Project/Resume/' . $file_name;
-      //   if (move_uploaded_file($file_tmp, $file_dest)) {
-      //     echo "Resume uploaded successfully!";
-      //   } else {
-      //     echo "Error uploading resume!";
-      //   }
-      // }
-      
 $conn=new mysqli('localhost','root','','CampusConnect');
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
-       
+// print_r($_SESSION);
 $name = $_POST['name'];
 // $age = $_POST['age'];
 $gender = $_POST['gender'];
@@ -107,20 +93,25 @@ $specialization = $_POST['specialization'];
 $AOF = $_POST['field_to_work'];
 $Dob=$_POST['datepicker'];
 $RollNo=$_POST['roll'];
-
-
-$sql = "UPDATE Student SET Name='$name',10th='$tenth_marks',RollNo='$roll',12th='$twelfth_marks',CPI='$cpi',DOB='$Dob',PhoneNo='$sex',Sex='$gender',Specialization='$specialization', Area_of_interest='$AOF' WHERE Email='$email'";
+$_SESSION['cpi']=$cpi;
+$ctc = $_POST['Placed'];
+$_SESSION['ctc']=$ctc;
+$transcript = $_POST['transcript'];
+$resume = $_POST['resume1'];
+print_r($_POST);
+$sql = "UPDATE Student SET resume = '$resume' , transcript = '$transcript',Name='$name',10th='$tenth_marks',RollNo='$roll',12th='$twelfth_marks',CPI='$cpi',DOB='$Dob',PhoneNo='$sex',Sex='$gender',Specialization='$specialization', Area_of_interest='$AOF', CTC =$ctc WHERE Email='$email'";
 $conn->query($sql);
 
 if (mysqli_query($conn, $sql)) {
-   echo "User updated successfully!";
+   echo "User Updated Sucessfully.";
+  //  print($_SESSION);
 } else {
    echo "Error updating user: " . mysqli_error($conn);
 }
     }
   }
   else{
-    
+    header('Location : temp.php');
   }
 
 ?>
@@ -147,19 +138,27 @@ if (mysqli_query($conn, $sql)) {
   <input type="number" step="0.01" name="sex" placeholder="Contact Number">
   <!-- <input type="text" step="0.01" name="resume" placeholder="Drive Link to Resume"> -->
 	<input type="date" id="datepicker" name="datepicker" placeholder="Date Of Birth">
-  <input type="file" name="resume1" accept=".pdf">
-
+  <input type="text" name="transcript" placeholder="Enter the link of your transcript">
+  <input type="text" name="resume1" placeholder="Enter the link of your Resume">
     <input type="number" step="0.01" name="tenth_marks" placeholder="10th Marks">
   <input type="number" step="0.01" name="twelfth_marks" placeholder="12th Marks">
   <input type="number" step="0.01" name="cpi" placeholder="CPI">
   <input type="text" name="specialization" placeholder="Specialization">
+  <input type="number" name="Placed" placeholder="Are you placed? If yes, write your Current CTC ">
   <!-- <input type="text" name="area_of_interest" placeholder="Area of Interest"> -->
   <select name="field_to_work" id = "field_to_work" required>
     <option value="">Select Field to Work In</option>
-    <option value="Quant">Quant</option>
-    <option value="Networks">Networks</option>
-    <option value="Security">Security</option>
-    <option value="Machine Learning">Machine Learning</option>
+    <?php
+    $conn = new mysqli('localhost', 'root', '', 'CampusConnect');
+                    if ($conn->connect_error){
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "select distinct Role_Name from Job_Roles";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['Role_Name'] . '">' . $row['Role_Name'] . '</option>';
+                    }
+                ?>
   </select>
   <input type="submit" value="Submit" style="background-color: #000000;
   color: #ffffff;
