@@ -2,7 +2,7 @@
 This project was done under Prof. Samrat Mondal for the course Database Lab - CS260 at IIT Patna.
 The task was to create a database management system for the Training and Placement Cell.
 
-**Team**: Anuj Sharma(2101CS11), Aryan Sahoo(2101AI06), Sahil Agrawal(2101CS69)
+**Team**: Aryan Sahoo(2101AI06), Sahil Agrawal(2101CS69), Anuj Sharma(2101CS11)
 **Report**: https://drive.google.com/file/d/14FC58XpFQtlsvUfkt6tMUe36mG8VnGEL/view?usp=sharing 
 **Demo Video**: https://drive.google.com/file/d/18dovQuif01kJBuUIeE30iIp7zpWWE6ot/view?usp=sharing 
 
@@ -28,6 +28,6 @@ The task was to create a database management system for the Training and Placeme
 * They could search through the students who showed interest in the company, the student's skills, resume and CPI.
 
 ## Division of Work:
-Anuj Sharma (yoco-a11) - Mainly upon the alumni, admin and creating the database model.
 Aryan Sahoo (AryanSahoo-2003) - Mainly upon the company and the backend of entire database.
 Sahil Agrawal (SahilA753) - Mainly upon the student and the frontend of website.
+Anuj Sharma (yoco-a11) - Mainly upon the alumni, admin and creating the database model.
