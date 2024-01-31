@@ -1,5 +1,5 @@
 # CampusConnect
-This project was done under Prof. Samrat Mondal for the course Database Lab - CS260 at IIT Patna.
+This project was done so as mitigate the issue of poor TPC portal which doesn't contain the centralized database and actions to be taken.
 The task was to create a database management system for the Training and Placement Cell.
 
 **Team**: Aryan Sahoo(2101AI06), Sahil Agrawal(2101CS69), Anuj Sharma(2101CS11)
