@@ -34,4 +34,4 @@ Aryan Sahoo (AryanSahoo-2003) - Mainly upon the company and the backend of entir
 
 Sahil Agrawal (SahilA753) - Mainly upon the student and the frontend of website.
 
-Anuj Sharma (yoco-a11) - Mainly upon the alumni, admin and creating the database model.
+Anuj Sharma (sharmaanuj334) - Mainly upon the alumni, admin and creating the database model.
